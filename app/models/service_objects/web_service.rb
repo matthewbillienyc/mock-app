@@ -16,6 +16,7 @@ class WebService
     end
   end
 
-  def self.post_new_user
+  def self.post_new_user(name)
+    # post(url, :body => { name: name }.to_json)
   end
 end
