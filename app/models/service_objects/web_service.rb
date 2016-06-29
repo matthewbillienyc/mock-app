@@ -16,6 +16,14 @@ class WebService
     end
   end
 
+  def self.get_single_user(id)
+    url= BASE_URI + EXTENSION + '/users/' + id
+    response = get(url)
+    # user = JSON.parse(response.body)
+    # byebug
+    # User.new(name: user['name'])
+  end
+
   def self.post_new_user(name)
     # post(url, :body => { name: name }.to_json)
     url = BASE_URI + EXTENSION + '/users/'

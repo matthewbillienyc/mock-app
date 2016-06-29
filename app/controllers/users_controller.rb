@@ -17,6 +17,23 @@ class UsersController < ApplicationController
     @user = User.new(name: nil)
   end
 
+  def show
+    byebug
+    @user= WebService.get_single_user(params[:id])
+    byebug
+  end
+
+  def edit
+
+  end
+
+  def update
+  end
+
+  def destroy
+
+  end
+
   private
   def user_params
     params.require(:user).permit(:name)

@@ -1,8 +1,8 @@
 <div class='container'>
   <h3>Users:</h3>
   <ul>
-    <% @users.each do |user| %>
-      <li><%= user.name %></li>
+    <% @users.each_with_index do |user, index| %>
+      <li> <%= link_to "#{user.name}", show_path(index + 1) %></li>
     <% end %>
   </ul>
   <h3>Register user </h3>
