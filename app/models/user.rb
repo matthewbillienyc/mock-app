@@ -3,6 +3,8 @@ class User
   attr_accessor :name
 
   def initialize(user_hash)
-    send("#{key}=", value)
+    user_hash.each do |key, value|
+      send("#{key}=", value)
+    end
   end
 end
