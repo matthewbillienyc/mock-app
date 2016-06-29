@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    byebug
-    @user= WebService.get_single_user(params[:id])
-    byebug
+    @user_id = params[:id]
+    @user= WebService.get_single_user(@user_id)
   end
 
   def edit

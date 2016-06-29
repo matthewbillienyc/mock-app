@@ -19,9 +19,8 @@ class WebService
   def self.get_single_user(id)
     url= BASE_URI + EXTENSION + '/users/' + id
     response = get(url)
-    # user = JSON.parse(response.body)
-    # byebug
-    # User.new(name: user['name'])
+    user = JSON.parse(response.body)
+    User.new(name: response.parsed_response["name"])
   end
 
   def self.post_new_user(name)
