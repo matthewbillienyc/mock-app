@@ -5,5 +5,11 @@
       <li><%= user.name %></li>
     <% end %>
   </ul>
-  <%= link_to "Register New User", register_path %>
+  <h3>Register user </h3>
+
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit "Create User" %>
+  <% end %>
 </div>
