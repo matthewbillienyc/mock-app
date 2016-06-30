@@ -2,6 +2,8 @@ require 'service_objects/web_service'
 class CasesController < ApplicationController
 
   def show
+    @case_id = params[:id]
+    @case = WebService.get_single_case_by(@case_id)
   end
 
   def index

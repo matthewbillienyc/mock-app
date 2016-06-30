@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get '/users/new' => 'users#new', as: :register
   post'/users' => 'users#create'
   put '/users/:id' => 'users#update'
-  get '/users/:id' => 'users#show', as: :show
-  get '/users/:id/edit' => 'users#edit', as: :edit
+  get '/users/:id' => 'users#show', as: :show_user
+  get '/users/:id/edit' => 'users#edit', as: :edit_user
 
   get '/cases' => 'cases#index'
+  get '/cases/:id' => 'cases#show', as: :show_case
   get '/cases/users/:id' => 'cases#all_by_user'
 
   # The priority is based upon order of creation: first created -> highest priority.

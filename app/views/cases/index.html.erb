@@ -1,6 +1,7 @@
 <h2>Cases by Description</h2>
 <ul>
-<% @cases.each do |cas| %>
-  <li><%= link_to cas.description, '/cases'%></li>
+<% @cases.each_with_index do |cas, index| %>
+
+  <li><%= link_to cas.description, show_case_path(index + 1) %></li>
   <% end %>
 </ul>
