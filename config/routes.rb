@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id/edit' => 'users#edit', as: :edit
 
   get '/cases' => 'cases#index'
+  get '/users/:id/cases' => 'cases#all_by_user'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -8,4 +8,10 @@ class CasesController < ApplicationController
     @cases = WebService.get_all_cases
   end
 
+  def all_by_user
+    byebug
+    @user_id = params[:id]
+    @cases = WebService.get_all_cases_by_user(@user_id)
+  end
+
 end

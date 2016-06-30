@@ -51,4 +51,13 @@ class WebService
     Case.new(description: response.parsed_response['description'], user_id: response.parsed_response['user_id'])
   end
 
+  def self.get_all_cases_by_user(id)
+    url = BASE_URI + EXTENSION + '/users/' + id + '/cases'
+    byebug
+    response= get(url)
+    cases = JSON.parse(response.body)
+    cases.map {|cas| Case.new(description: cas['description'], user_id: cas['user_id'])}
+  end
+
+
 end
