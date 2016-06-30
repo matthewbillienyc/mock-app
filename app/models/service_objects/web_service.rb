@@ -19,7 +19,7 @@ class WebService
 
   end
 
-  def self.get_single_user(id)
+  def self.get_single_user_by(id)
     url= BASE_URI + EXTENSION + '/users/' + id
     response = get(url)
     user = JSON.parse(response.body)
@@ -41,8 +41,14 @@ class WebService
     url = BASE_URI + EXTENSION + '/cases'
     response = get(url)
     cases = JSON.parse(response.body)
-    byebug
     cases.map {|cas| Case.new(description: cas['description'], user_id: cas['user_id'])}
+  end
+
+  def self.get_single_case_by(id)
+    url = BASE_URI + EXTENSION + '/cases/' + id
+    response = get(url)
+    cas = JSON.parse(response.body)
+    Case.new(description: response.parsed_response['description'], user_id: response.parsed_response['user_id'])
   end
 
 end

@@ -5,7 +5,6 @@ class CasesController < ApplicationController
   end
 
   def index
-    
     @cases = WebService.get_all_cases
   end
 
