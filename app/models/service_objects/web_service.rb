@@ -52,7 +52,7 @@ class WebService
   end
 
   def self.get_all_cases_by_user(id)
-    url = BASE_URI + EXTENSION + '/users/' + id + '/cases'
+    url = BASE_URI + EXTENSION + '/cases' + '/users/' + id
     byebug
     response= get(url)
     cases = JSON.parse(response.body)
