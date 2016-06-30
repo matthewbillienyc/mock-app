@@ -19,12 +19,12 @@ class UsersController < ApplicationController
 
   def show
     @user_id = params[:id]
-    @user= WebService.get_single_user(@user_id)
+    @user= WebService.get_single_user_by(@user_id)
   end
 
   def edit
     @user_id = params[:id]
-    @user= WebService.get_single_user(@user_id)
+    @user= WebService.get_single_user_by(@user_id)
   end
 
   def update

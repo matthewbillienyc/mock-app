@@ -4,6 +4,7 @@ class CasesController < ApplicationController
   def show
     @case_id = params[:id]
     @case = WebService.get_single_case_by(@case_id)
+    @user = WebService.get_single_user_by(@case.user_id.to_s )
   end
 
   def index
