@@ -22,7 +22,7 @@ $(function() {
   })
 
   $('#container button#edit').click(function(event){
-
+    debugger;
     var url = window.location.href;
     var currentName = $('#name').text();
     var user_id = /[/]\d+/g.exec(window.location.href)[0].slice(1);

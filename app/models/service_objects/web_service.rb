@@ -11,9 +11,12 @@ class WebService
     url = BASE_URI + EXTENSION + '/users'
     response = get(url)
     users = JSON.parse(response.body)
+    users.sort_by!{|user| user["id"]}
+    byebug
     users.map do |user|
       User.new(name: user['name'])
     end
+
   end
 
   def self.get_single_user(id)
