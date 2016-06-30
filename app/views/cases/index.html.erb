@@ -1,0 +1,6 @@
+<h2>Cases by Description</h2>
+<ul>
+<% @cases.each do |cas| %>
+  <li><%= link_to cas.description, '/cases'%></li>
+  <% end %>
+</ul>

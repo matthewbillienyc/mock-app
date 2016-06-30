@@ -36,4 +36,13 @@ class WebService
     url = BASE_URI + EXTENSION + '/users/' + id
     put(url, :query => {name: name})
   end
+
+  def self.get_all_cases
+    url = BASE_URI + EXTENSION + '/cases'
+    response = get(url)
+    cases = JSON.parse(response.body)
+    byebug
+    cases.map {|cas| Case.new(description: cas['description'], user_id: cas['user_id'])}
+  end
+
 end
