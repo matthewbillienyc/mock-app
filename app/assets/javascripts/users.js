@@ -9,7 +9,7 @@ $(function() {
     var name= $('#user_name').val();
     $('#user_name').val('');
     var lastEntry = $('li:last').html();
-    var lastID = /[/]\d+/g.exec(lastEntry);
+    var lastID = /[/]\d+/g.exec(lastEntry)[0].slice(1);
     var currentID = parseInt(lastID) + 1;
     $.ajax({
       url: '/users',

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    #should our app be able to destroy records on the API?
   end
 
   private
