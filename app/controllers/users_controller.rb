@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user_id = params[:id]
     @new_name = params[:name]
     @user = WebService.put_update_user(@user_id, @new_name)
+    render :json => @new_name
   end
 
   def destroy

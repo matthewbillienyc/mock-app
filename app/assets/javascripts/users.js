@@ -44,8 +44,4 @@ $(function() {
     })
 
   })
-
-  // $(document).ajaxComplete(function(event, request, options){
-  //   $('ul').append('<li>'+ request.responseText +'</li>')
-  // })
 });
