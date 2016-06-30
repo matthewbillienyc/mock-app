@@ -23,10 +23,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user_id = params[:id]
+    @user= WebService.get_single_user(@user_id)
   end
 
   def update
+    @user_id = params[:id]
+    @new_name = params[:name]
+    @user = WebService.put_update_user(@user_id, @new_name)
   end
 
   def destroy

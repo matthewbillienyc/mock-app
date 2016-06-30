@@ -28,4 +28,9 @@ class WebService
     url = BASE_URI + EXTENSION + '/users/'
     post(url, :query => {name: name})
   end
+
+  def self.put_update_user(id, name)
+    url = BASE_URI + EXTENSION + '/users/' + id
+    put(url, :query => {name: name})
+  end
 end
