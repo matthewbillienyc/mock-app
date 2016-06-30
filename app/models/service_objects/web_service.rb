@@ -12,7 +12,7 @@ class WebService
     response = get(url)
     users = JSON.parse(response.body)
     users.sort_by!{|user| user["id"]}
-    byebug
+
     users.map do |user|
       User.new(name: user['name'])
     end
