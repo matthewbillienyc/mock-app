@@ -9,10 +9,11 @@ class Account
   attr_accessor :employer, :account_number, :organization
 
   def initialize(input)
-    @employer = input[:employer]
-    @account_number = input[:account_number]
-    @organization = Organization.new(input[:organization])
+    byebug
+    @employer = input["employer"]
+    @account_number = input["account_number"]
+    @organization = Organization.new(input["organization"])
   end
 
-  
+
 end
