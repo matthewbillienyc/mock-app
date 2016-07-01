@@ -9,9 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # you'll want to byebug this and see how the ajax information comes in, then figure out how to send the name to the post_new_user
     @user= WebService.post_new_user(params[:name])
-    # instead of a redirect you'll want to render :json some kind of thing back if successful
     render :json => params[:name]
   end
 
@@ -47,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def get_user_account
-    
+    WebService.get_account_for_user(1)
   end
 
 end
