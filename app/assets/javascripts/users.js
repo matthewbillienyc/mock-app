@@ -4,7 +4,7 @@ $(function() {
   // preventDefault action
   // capture form params and send them with ajax call to your controller
   // on success, update the page with jquery somewhere showing the new user was posted successfully
-  $('.new_user input[type="submit"]').click(function(event){
+  $('input[type="submit"]').on("click", function(event){
     event.preventDefault();
     var name= $('#user_name').val();
     $('#user_name').val('');
@@ -21,28 +21,5 @@ $(function() {
     })
   })
 
-  $('button#edit').click(function(event){
-    var url = window.location.href;
-    var currentName = $('#name').text();
-    var user_id = /[/]\d+/g.exec(window.location.href)[0].slice(1);
-    console.log("Edit ")
 
-    $('#name').html('<input type="text" id="name" value="'+ currentName +'">');
-    $('button#edit').css("display","none")
-    $('#container').append('<button id="update">Update This User</button>');
-    $('#container button#update').click(function(){
-      var newName = $('input#name').val();
-      $.ajax({
-        url: '/users/' + user_id,
-        method: 'PUT',
-        data: {name: newName},
-        complete: (function(event, request, options){
-          $('#name').html(newName);
-          $('button#update').css("display", "none")
-          $('button#edit').css("display", "inline");
-        })
-      })
-    })
-
-  })
 });
