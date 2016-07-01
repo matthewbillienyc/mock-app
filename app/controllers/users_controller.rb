@@ -2,6 +2,7 @@ require 'service_objects/web_service'
 
 class UsersController < ApplicationController
   # before_action :get_user_account, only [:show]
+  before_action :get_user_account, only [:show]
 
   def new
     @user = User.new(name: nil)
@@ -45,6 +46,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name)
   end
 
-  # get_user_account
+  def get_user_account
+    
+  end
 
 end
