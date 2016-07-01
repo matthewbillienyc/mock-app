@@ -19,6 +19,10 @@ class WebService
 
   end
 
+  def self.get_account_for_user(id)
+    # stuff
+  end
+
   def self.get_single_user_by(id)
     url= BASE_URI + EXTENSION + '/users/' + id
     response = get(url)
