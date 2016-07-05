@@ -38,7 +38,7 @@ class UsersControllerTest < ActionController::TestCase
 
     describe 'index' do
       it 'should return all users' do
-        users = [ { first_name: 'Bob', last_name: 'Franco' }, { first_name: 'Diane', last_name: 'Sawyer' }]
+        users = [ { first_name: 'Bob', last_name: 'Franco' }, { first_name: 'Diane', last_name: 'Sawyer' } ]
         account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
         stub_request(:get, %r{.*\/accounts})
           .to_return(status: 200, body: account.to_json, headers: {})
@@ -77,7 +77,7 @@ class UsersControllerTest < ActionController::TestCase
         stub_request(:post, %r{.*\/users})
           .to_return(status: 200, body: " ", headers: {})
 
-        post :create
+        post :create, name: user
 
         assert_response 200
       end

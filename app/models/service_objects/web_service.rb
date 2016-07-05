@@ -34,10 +34,10 @@ class WebService
     User.new(first_name: request.parsed_response["first_name"],last_name: request.parsed_response["last_name"])
   end
 
-  def self.post_new_user(name)
+  def self.post_new_user(params)
     # post(url, :body => { first_name: first_name, last_name: last_name }.to_json)
     url = BASE_URI + EXTENSION + '/users/'
-    post(url, :query => {first_name: name[:first_name], last_name: name[:last_name]})
+    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name]})
   end
 
   def self.put_update_user(id, name)
