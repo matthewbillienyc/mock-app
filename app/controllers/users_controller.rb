@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # before_action :get_user_account, only :show
 
   def new
-    @user = User.new(name: nil)
+    @user = User.new({})
   end
 
   def create
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def index
     @users = WebService.get_all_users
-    @user = User.new(name: nil)
+    @user = User.new({})
   end
 
   def show
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).require(:name).permit(:first_name, :last_name)
   end
 
   def get_user_account
