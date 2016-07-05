@@ -7,7 +7,7 @@ require 'minitest/pride'
 
 require 'webmock/minitest'
 require 'mocha/mini_test'
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: false)
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
