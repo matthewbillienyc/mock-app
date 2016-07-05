@@ -11,12 +11,12 @@ class CasesControllerTest < ActionController::TestCase
 
       it 'should display the description and user_id of requested case' do
         #arrange
-        case_in_Q = {description: "A new case because of a typo on Form 324(j)", user_id: 4}
-
-        stub_request(:get, %r{.*\/cases/}).
-          with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-          to_return(:status => 200, :body => "", :headers => {})
-
+        case_in_Q = { description: "A new case because of a typo on Form 324(j)", user_id: 4 }
+        user = { first_name: 'Bob', last_name: 'Bobb' }
+        stub_request(:get, %r{.*\/cases}).
+          to_return(:status => 200, :body => case_in_Q.to_json, :headers => {})
+        stub_request(:get, %r{.*\/users}).
+          to_return(:status => 200, :body => user.to_json, :headers => {})
 
           #act
         get :show, id: 1
