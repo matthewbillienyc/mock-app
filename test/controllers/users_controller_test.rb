@@ -25,15 +25,6 @@ class UsersControllerTest < ActionController::TestCase
         assert_template :show
       end
 
-      # it 'should display their address' do
-      #   add_line_1 = "1234 Main Street"
-      #   city= "Townsville"
-      #   state= "New State"
-      #   zip_code= "12345"
-      #   full_add = add_line_1 + ", " + city + ", " + state + ", " + zip_code
-      #   request = stub_request(:get, 'http://whatever').with(headers: {etc: 'etc'}, query: {first_name: "Bob", last_name: "Franco"}).to_return(body: "Bob Franco, 1234 Main Street, Townsville, New State, 12345")
-      #   assert_includes request.response.body, full_add
-      # end
 
     end
 
