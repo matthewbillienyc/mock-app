@@ -1,4 +1,14 @@
-<div id="name"><%= @user.name %></div
-<br>
+<strong>Name: </strong><span id="name"> <%= @user.name %></span>
 <br>
 <div id="container"><button id="edit">Edit This User</button></div>
+
+
+<div id="account_info">
+  <h3>Account Info:</h3>
+  <strong>Employer</strong>: <%= @account.employer %><br>
+  <strong>Acct Number</strong>: <%= @account.account_number %><br>
+  <strong>Organization Name</strong>: <%= @account.organization.name %><br>
+  <strong>Organization State</strong>: <%= @account.organization.state %>
+</div>
+<br><br><br><br>
+<%= link_to "Back", users_path %>

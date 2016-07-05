@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/cases/:id' => 'cases#show', as: :show_case
   get '/cases/users/:id' => 'cases#all_by_user'
 
+
+  get '/accounts/:id' => 'accounts#show', as: :show_account
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
