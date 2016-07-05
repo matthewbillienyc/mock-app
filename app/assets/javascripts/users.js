@@ -1,4 +1,3 @@
-
 $(function() {
   // put a listener on your form on submit or on your submit button on click (give it some unique id)
   // preventDefault action
@@ -22,6 +21,4 @@ $(function() {
       })
     })
   })
-
-
 });
