@@ -10,15 +10,19 @@ class UsersControllerTest < ActionController::TestCase
     describe 'show' do
       it 'should display the name of requested user' do
         #arrange
-        first_name = 'Bob'
-        last_name = 'Franco'
-        full_name = first_name +" "+ last_name
+        user = { first_name: 'Bob', last_name: 'Franco' }
+        account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
+        stub_request(:get, %r{.*\/accounts})
+          .to_return(status: 200, body: account.to_json, headers: {})
+        stub_request(:get, %r{.*\/users})
+          .to_return(status: 200, body: user.to_json, headers: {})
 
         #act
         get :show, id: 1
 
         #assert_response
         assert_response 200
+        assert_template :show
       end
 
       # it 'should display their address' do
