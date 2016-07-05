@@ -18,10 +18,10 @@ class CasesControllerTest < ActionController::TestCase
         stub_request(:get, %r{.*\/users}).
           to_return(:status => 200, :body => user.to_json, :headers => {})
 
-          #act
+        #act
         get :show, id: 1
 
-        #assert_response
+        #assert
         assert_response 200
         assert_template :show
       end
