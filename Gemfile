@@ -36,6 +36,14 @@ gem 'httparty'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'minitest-spec-rails', '~> 5.3.0'
+  gem 'minitest-reporters', '>= 0.5.0'
+  gem 'minitest-rails', '~> 2.2.0'
+  gem 'capybara'
+  gem 'rspec-expectations'
+  gem 'cucumber-rails', '1.4.3', :require => false
+  gem 'webmock'
+  gem 'mocha', '~> 1.1.0'
 end
 
 group :development do
