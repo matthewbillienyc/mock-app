@@ -36,6 +36,7 @@ class WebService
 
   def self.post_new_user(params)
     # post(url, :body => { first_name: first_name, last_name: last_name }.to_json)
+
     url = BASE_URI + EXTENSION + '/users/'
     post(url, :query => {first_name: params[:first_name], last_name: params[:last_name]})
   end
