@@ -4,8 +4,9 @@ $(function() {
   // preventDefault action
   // capture form params and send them with ajax call to your controller
   // on success, update the page with jquery somewhere showing the new user was posted successfully
-  $('input[type="submit"]').on("click", function(event){
+  $('.create-user').click(function(event){
     event.preventDefault();
+    debugger
     var name= $('#user_name').val();
     $('#user_name').val('');
     var lastEntry = $('li:last').html();
@@ -15,7 +16,8 @@ $(function() {
       url: '/users',
       method: 'POST',
       data: {name: name},
-      complete: (function(event, request, options){
+      success: (function(event, request, options){
+        debugger;
         $('ul').append('<li><a href="/users/'+ currentID + '">'+ event.responseText +'</a></li>')
       })
     })

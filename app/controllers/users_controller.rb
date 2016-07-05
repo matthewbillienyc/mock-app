@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user= WebService.post_new_user(params[:name])
-    render :json => params[:name]
+
+    @user= WebService.post_new_user(params[:user])
+    render :json => @user
   end
 
   def index
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).require(:name).permit(:first_name, :last_name)
+    params.require(:user).permit(:first_name, :last_name)
   end
 
   def get_user_account
