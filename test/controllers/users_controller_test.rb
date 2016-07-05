@@ -16,7 +16,6 @@ class UsersControllerTest < ActionController::TestCase
           .to_return(status: 200, body: account.to_json, headers: {})
         stub_request(:get, %r{.*\/users})
           .to_return(status: 200, body: user.to_json, headers: {})
-
         #act
         get :show, id: 1
 
