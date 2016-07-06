@@ -2,7 +2,8 @@ require 'service_objects/web_service'
 
 class UsersController < ApplicationController
   # before_action :get_user_account, only [:show]
-  # before_action :get_user_account, only :show
+  before_action :get_user_account, only :show
+  before_action :get_user(params[:id]), only [:show, :edit]
 
   def new
     @user = User.new({})
@@ -20,14 +21,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @account = WebService.get_account_for_user(1)
-    @user_id = params[:id]
-    @user= WebService.get_single_user_by(@user_id)
   end
 
   def edit
-    @user_id = params[:id]
-    @user= WebService.get_single_user_by(@user_id)
   end
 
   def update
@@ -48,6 +44,10 @@ class UsersController < ApplicationController
 
   def get_user_account
     @account = WebService.get_account_for_user(1)
+  end
+
+  def get_user(id)
+    @user = WebService.get_single_user_by(id)
   end
 
 end
