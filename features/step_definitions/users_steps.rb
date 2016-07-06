@@ -1,10 +1,9 @@
 Given(/^$/) do
 end
 
-
-##### Index, show, and create #####
-
-###Index###
+#=========================================#
+#             ###View Records###          #
+#=========================================#
 Given(/^a user visits the main page$/) do
   visit root_path
 end
@@ -21,7 +20,9 @@ Then(/^the page navigates to a list of all users$/) do
   has_selector?('ul')
 end
 
-###Show & Create###
+#=========================================#
+#             ###Create Records###        #
+#=========================================#
 Given(/^a user visits the list of all users$/) do
   visit users_path
 end
@@ -40,23 +41,27 @@ Then(/^the page should add a new user$/) do
   has_link?("Capy Bara")
 end
 
-##### Edit #####
+#=========================================#
+#             ###Edit Records###          #
+#=========================================#
 Given(/^a user visits a given user record$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit 'users/1'
 end
 
-Then(/^presses the edit button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the user presses the button "(.*?)"$/) do |button_text|
+  click_button(button_text)
 end
 
 Then(/^fills out the new first name and last name forms$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in 'user_first_name', :with => 'Capy'
+  fill_in 'user_last_name', :with => 'Bara'
 end
 
-Then(/^clicks "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^clicks "([^"]*)"$/) do |button_text|
+  click_button(button_text)
 end
 
 Then(/^the user record should reflect the name change$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  has_text?('Capy Bara')
+  has_no_text?("CapyBara")
 end

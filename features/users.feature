@@ -14,7 +14,7 @@ Scenario: A user creates a new user record
 
 Scenario: User edits an existing user record
   Given a user visits a given user record
-  Then presses the edit button
+  Then the user presses the button "Edit This User"
   And fills out the new first name and last name forms
   And clicks "Update User"
   Then the user record should reflect the name change

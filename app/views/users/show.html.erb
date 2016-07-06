@@ -1,6 +1,13 @@
 <span id="name"><strong>Name: </strong><%= @user.name %></span>
-<%= hidden_field_tag "first_name", @user.first_name %>
-<%= hidden_field_tag "last_name", @user.last_name %>
+
+<span id="hidden-form"><%= form_for @user do |f| %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+  <%= f.submit "Update User", class:"update-user" %>
+<% end %>
+</span>
 <br>
 <div id="container"><button id="edit">Edit This User</button></div>
 
