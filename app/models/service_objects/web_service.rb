@@ -7,6 +7,7 @@ class WebService
 
 
   def self.get_all_users
+
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
     request = get(url)
     users = JSON.parse(request.body)
