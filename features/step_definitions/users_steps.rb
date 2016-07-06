@@ -41,3 +41,22 @@ Then(/^the page should add a new user$/) do
 end
 
 ##### Edit #####
+Given(/^a user visits a given user record$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^presses the edit button$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^fills out the new first name and last name forms$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^clicks "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the user record should reflect the name change$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
