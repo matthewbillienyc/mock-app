@@ -1,4 +1,6 @@
-<strong>Name: </strong><span id="name"><%= @user.name %></span>
+<span id="name"><strong>Name: </strong><%= @user.name %></span>
+<%= hidden_field_tag "first_name", @user.first_name %>
+<%= hidden_field_tag "last_name", @user.last_name %>
 <br>
 <div id="container"><button id="edit">Edit This User</button></div>
 

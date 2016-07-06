@@ -42,6 +42,7 @@ class WebService
 
   def self.put_update_user(id, name)
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{id}"
+
     put(url, :query => {first_name: name[:first_name], last_name: name[:last_name]})
   end
 
@@ -61,7 +62,6 @@ class WebService
 
   def self.get_all_cases_by_user(id)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{USERS}/#{id}"
-    byebug
     request= get(url)
     cases = JSON.parse(request.body)
     cases.map {|cas| Case.new(description: cas['description'], user_id: cas['user_id'])}
