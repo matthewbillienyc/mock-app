@@ -14,11 +14,11 @@ $(function(){
         url: '/users/' + user_id,
         method: 'PUT',
         data: {name: newName},
-        complete: (function(event, request, options){
+        success: function(event, request, options){
           $('#name').html(newName);
           $('button#update').css("display", "none")
           $('button#edit').css("display", "inline");
-        })
+        }
       })
     })
 

@@ -8,7 +8,7 @@ class WebService
   EXTENSION = 'mockapi'
 
   def self.get_all_users
-    url = BASE_URI + EXTENSION + '/users'
+    url = "#{BASE_URI}#{EXTENSION}/#{USERS}"
     request = get(url)
     users = JSON.parse(request.body)
     users.sort_by!{|user| user["id"]}
@@ -28,7 +28,7 @@ class WebService
   end
 
   def self.get_single_user_by(id)
-    url= BASE_URI + EXTENSION + '/users/' + id
+    url = "#{BASE_URI}#{EXTENSION}/#{USERS}/#{id}"
     request = get(url)
     user = JSON.parse(request.body)
     User.new(first_name: request.parsed_response["first_name"],last_name: request.parsed_response["last_name"])
