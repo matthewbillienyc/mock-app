@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def new_user
-    User.new({})
+    @user = User.new({})
   end
 
   def get_user
