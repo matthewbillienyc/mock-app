@@ -1,6 +1,10 @@
 Given(/^$/) do
 end
 
+
+##### Index, show, and create #####
+
+###Index###
 Given(/^a user visits the main page$/) do
   visit root_path
 end
@@ -17,18 +21,23 @@ Then(/^the page navigates to a list of all users$/) do
   has_selector?('ul')
 end
 
+###Show & Create###
 Given(/^a user visits the list of all users$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit users_path
 end
 
 Then(/^enters a first and last name into the register user fields$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in 'user_first_name', :with => 'Capy'
+  fill_in 'user_last_name', :with => 'Bara'
 end
 
-Then(/^Submits the form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the user clicks the button "(.*?)"$/) do |button_text|
+  click_link_or_button(button_text)
 end
 
 Then(/^the page should add a new user$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  has_text?("Capy Bara")
+  has_link?("Capy Bara")
 end
+
+##### Edit #####

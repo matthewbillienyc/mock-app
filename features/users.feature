@@ -6,8 +6,15 @@ Scenario: A user visits the main page
   And the user clicks the link "All Users"
   Then the page navigates to a list of all users
 
-Scenario: A user visits the list of all users
+Scenario: A user creates a new user record
   Given a user visits the list of all users
   Then enters a first and last name into the register user fields
-  And Submits the form
+  And the user clicks the button "Create User"
   Then the page should add a new user
+
+Scenario: User edits an existing user record
+  Given a user visits a given user record
+  Then presses the edit button
+  And fills out the new first name and last name forms
+  And clicks "Update User"
+  Then the user record should reflect the name change
