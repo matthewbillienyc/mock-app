@@ -29,6 +29,7 @@ class WebService
 
   def self.get_single_user_by(id)
     url= "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{id}"
+
     request = get(url)
     user = JSON.parse(request.body)
     User.new(first_name: request.parsed_response["first_name"],last_name: request.parsed_response["last_name"])
@@ -66,6 +67,11 @@ class WebService
     request= get(url)
     cases = JSON.parse(request.body)
     cases.map {|cas| Case.new(description: cas['description'], user_id: cas['user_id'])}
+  end
+
+  def self.post_new_case(params)
+    url = "#{BASE_URI}/#{EXTENSION}/#{CASES}"
+    post(url, :query => {description: params[:description], user_id: 1})
   end
 
 end

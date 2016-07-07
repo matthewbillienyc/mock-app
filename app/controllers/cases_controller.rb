@@ -4,12 +4,14 @@ class CasesController < ApplicationController
 
   def show
     @case_id = params[:id]
-    @case = WebService.get_single_case_by(@case_id)
-    @user = WebService.get_single_user_by(@case.user_id.to_s )
+    @case = WebService.get_single_case_by(@case_id.to_i)
+
+    @user = WebService.get_single_user_by(@case.user_id.to_i)
   end
 
   def index
     @cases = WebService.get_all_cases
+    @case = Case.new({})
   end
 
   def all_by_user
@@ -20,5 +22,13 @@ class CasesController < ApplicationController
   end
 
   def create
+    @case = WebService.post_new_case(description: case_params[:description], user_id: 3)
+    render :json => @case
+  end
+
+  private
+
+  def case_params
+    params.require(:case).permit(:description)
   end
 end
