@@ -6,7 +6,7 @@ Scenario: A user visits the cases index
 
 Scenario: A user visits a specific case
   Given a user visiting the specific case
-  Then the page should show the description of the case and the user that filled it
+  Then the page should show the description of the case and the user that filed it
 
 Scenario: A user creates a new case
   Given a user visits the case index page

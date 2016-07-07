@@ -24,11 +24,12 @@ Given(/^a user visiting the specific case$/) do
   visit show_case_path(1)
 end
 
-Then(/^the page should show the description of the case and the user that filled it$/) do
-  # has_text?('A new and interesting turn of events')
-
-  # has_link?('Jarlett Scohanson')
-  page.has_content?("I know this isn't on the page")
+Then(/^the page should show the description of the case and the user that filed it$/) do
+  new_interesting = page.has_text?('A new and interesting turn of events')
+  cap_test = page.has_text?('Capy Bara')
+  jar_test = page.has_link?('Jarlett Scohanson')
+  byebug
+  jar_test == true
 end
 
 #========================================#
