@@ -25,17 +25,15 @@ Given(/^a user visiting the specific case$/) do
 end
 
 Then(/^the page should show the description of the case and the user that filed it$/) do
-  new_interesting = page.has_text?('A new and interesting turn of events')
-  cap_test = page.has_text?('Capy Bara')
-  jar_test = page.has_link?('Jarlett Scohanson')
-  byebug
-  jar_test == true
+  page.has_text?("Bob Bobb")
+  page.has_text?("A new case because of a typo on Form 324(j)")
 end
 
 #========================================#
 #     A user creates a new case          #
 #========================================#
 Given(/^a user visits the case index page$/) do
+
   visit cases_path
 end
 
@@ -44,7 +42,18 @@ Given(/^fills out the form for a new case$/) do
 end
 
 Given(/^hits the "([^"]*)" button$/) do |arg1|
-  pending # click_button(arg1)
+
+  user = {first_name: "Frames", last_name: "Janco"}
+  stub_request(:post, %r{.*\/accounts})
+    .to_return(status: 200, body: " ", headers: {})
+  stub_request(:post, %r{.*\/users})
+    .to_return(status: 200, body: " ", headers: {})
+
+    click_button(arg1)
+  post :create, name: user
+
+  assert_response 200
+end
 end
 
 Then(/^a link to the new case should be appended to the list of cases$/) do
