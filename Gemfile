@@ -44,7 +44,6 @@ group :development, :test do
   gem 'cucumber-rails', '1.4.3', :require => false
   gem 'webmock'
   gem 'mocha', '~> 1.1.0'
-  gem 'capybara'
   gem 'poltergeist', '1.5.1'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
