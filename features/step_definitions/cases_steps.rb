@@ -42,22 +42,15 @@ Given(/^fills out the form for a new case$/) do
 end
 
 Given(/^hits the "([^"]*)" button$/) do |arg1|
+  stub_request(:post, %r{.*\/cases})
+    .to_return(status: 200, body: "", headers: {})
 
-  user = {first_name: "Frames", last_name: "Janco"}
-  stub_request(:post, %r{.*\/accounts})
-    .to_return(status: 200, body: " ", headers: {})
-  stub_request(:post, %r{.*\/users})
-    .to_return(status: 200, body: " ", headers: {})
-
-    click_button(arg1)
-  post :create, name: user
-
-  assert_response 200
-end
+  click_button(arg1)
 end
 
 Then(/^a link to the new case should be appended to the list of cases$/) do
-  pending # has_link?('The mountain stirs once more')
+  byebug
+  page.has_text?("Your case added successfully")
 end
 
 #========================================#
