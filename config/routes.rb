@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'logins/new'
+
+  get 'logins/create'
+
   devise_for :logins
   root 'application#index'
   get '/users' => 'users#index'
