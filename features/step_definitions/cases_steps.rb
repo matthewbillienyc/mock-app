@@ -33,7 +33,6 @@ end
 #     A user creates a new case          #
 #========================================#
 Given(/^a user visits the case index page$/) do
-
   visit cases_path
 end
 
@@ -41,16 +40,17 @@ Given(/^fills out the form for a new case$/) do
   fill_in 'case_description', :with => 'The mountain stirs once more'
 end
 
+
 Given(/^hits the "([^"]*)" button$/) do |arg1|
   stub_request(:post, %r{.*\/cases})
-    .to_return(status: 200, body: "", headers: {})
+    .to_return(status: 200, body: "The mountain stirs once more".to_json, headers: {})
 
   click_button(arg1)
 end
 
 Then(/^a link to the new case should be appended to the list of cases$/) do
   byebug
-  page.has_text?("Your case added successfully")
+  page.has_text?("The mountain stirs once more")
 end
 
 #========================================#
