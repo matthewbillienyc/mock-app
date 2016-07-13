@@ -73,4 +73,9 @@ class WebService
     post(url, :query => {description: params[:description], user_id: 1})
   end
 
+  def self.put_update_case(id, description)
+    url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
+    put(url, :query => {description: description})
+  end
+
 end
