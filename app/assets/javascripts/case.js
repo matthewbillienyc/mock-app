@@ -14,7 +14,7 @@ $(function(){
         url: '/cases/' + case_id,
         method: 'PUT',
         data: {description: desc},
-        success: function(event, request, options){
+        complete: function(event, request, options){
           debugger;
           $('#description').html("Description"+event.new_desc);
           $('#description').show()

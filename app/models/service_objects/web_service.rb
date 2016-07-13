@@ -42,9 +42,7 @@ class WebService
   end
 
   def self.put_update_user(id, name)
-    byebug
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{id}"
-    
     put(url, :query => {first_name: name[:first_name], last_name: name[:last_name]})
   end
 

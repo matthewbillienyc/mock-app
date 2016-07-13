@@ -17,7 +17,7 @@ $(function() {
       url: '/users',
       method: 'POST',
       data: {user: {first_name: first_name, last_name: last_name}},
-      success: function(event, request, options){
+      complete: function(event, request, options){
         $('ul').append('<li><a href="/users/'+ currentID + '">'+ event.first_name +" "+ event.last_name+'</a></li>')
       }
     })

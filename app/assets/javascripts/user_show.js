@@ -18,7 +18,7 @@ $(function(){
         url: '/users/' + user_id,
         method: 'PUT',
         data: {name: {first_name: newFirst, last_name: newLast}},
-        success: function(event, request, options){
+        complete: function(event, request, options){
           $('#name').html("<strong>Name: </strong>"+event.first_name+" "+ event.last_name);
           $('#name').show()
           $('#hidden-form').hide()
