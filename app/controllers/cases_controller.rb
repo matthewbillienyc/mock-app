@@ -26,6 +26,13 @@ class CasesController < ApplicationController
     render :json => @case
   end
 
+  def update
+    @case_id = params[:id].to_i
+    @new_desc = params[:description]
+    @case = WebService.put_update_case(@case_id, @new_desc)
+    render :json => @new_desc
+  end
+
   private
 
   def case_params

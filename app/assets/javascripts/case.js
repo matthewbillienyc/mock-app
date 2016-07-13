@@ -2,25 +2,27 @@ $(function(){
   $('#hidden-form').hide()
   $('button#edit').on("click", function(event){
     var url = window.location.href;
-    var firstName = $('#description').val()
 
-    var user_id = /[/]\d+/g.exec(window.location.href)[0].slice(1);
+
+    var case_id = /[/]\d+/g.exec(window.location.href)[0].slice(1);
+
     console.log("Edit ")
 
     $('#hidden-form').show()
-    $('#name').hide()
+    $('#description').hide()
     $('button#edit').css("display","none")
-    $('.update-user').click(function(event){
+    $('.update-case').click(function(event){
+      debugger;
       event.preventDefault()
-      var newFirst = $('#user_first_name').val();
-      var newLast = $('#user_last_name').val();
+      var desc = $('input#case_description').val()
       $.ajax({
-        url: '/users/' + user_id,
+        url: '/cases/' + case_id,
         method: 'PUT',
-        data: {name: {first_name: newFirst, last_name: newLast}},
+        data: {description: desc},
         success: function(event, request, options){
-          $('#name').html("<strong>Name: </strong>"+event.first_name+" "+ event.last_name);
-          $('#name').show()
+          debugger;
+          $('#description').html("Description"+event.desc);
+          $('#description').show()
           $('#hidden-form').hide()
           $('button#edit').css("display", "inline");
 
