@@ -26,10 +26,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user_id = params[:id].to_i
-    @new_name = params[:name]
-    @user = WebService.put_update_user(@user_id, @new_name)
-    render :json => @new_name
+    user_id = params[:id].to_i
+    new_name = params[:name]
+    user = WebService.put_update_user(user_id, new_name)
+    render :json => user
   end
 
   def destroy
