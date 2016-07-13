@@ -14,13 +14,6 @@ end
 #     A user visits a specific case      #
 #========================================#
 Given(/^a user visiting the specific case$/) do
-  case_in_Q = { description: "A new case because of a typo on Form 324(j)", user_id: 4 }
-  user = { first_name: 'Bob', last_name: 'Bobb' }
-  stub_request(:get, %r{.*\/cases}).
-    to_return(:status => 200, :body => case_in_Q.to_json, :headers => {})
-  stub_request(:get, %r{.*\/users}).
-    to_return(:status => 200, :body => user.to_json, :headers => {})
-
   visit show_case_path(1)
 end
 

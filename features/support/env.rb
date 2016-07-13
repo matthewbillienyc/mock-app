@@ -24,7 +24,7 @@ Capybara.raise_server_errors = false
 Capybara.default_selector = :css
 Capybara.default_max_wait_time = 5
 
-WebMock.disable_net_connect!(:allow_localhost => true)
+WebMock.disable_net_connect!(:allow_localhost => false)
 
 Cucumber::Rails::Database.javascript_strategy = :transaction
 
