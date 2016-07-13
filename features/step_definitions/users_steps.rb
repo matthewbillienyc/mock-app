@@ -42,7 +42,6 @@ end
 #             ###Edit Records###          #
 #=========================================#
 Given(/^a user visits a given user record$/) do
-  byebug
   visit show_user_path(1)
 end
 

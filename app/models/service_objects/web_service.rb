@@ -20,8 +20,7 @@ class WebService
   end
 
   def self.get_account_for_user(id)
-    # stuff
-    url= "#{BASE_URI}/#{EXTENSION}/#{ACCOUNTS}/#{id}"
+    url= "#{BASE_URI}/#{EXTENSION}/#{ACCOUNTS}/1"
     request = get(url)
     account= JSON.parse(request.body)
     Account.new(account)

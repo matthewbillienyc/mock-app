@@ -14,7 +14,7 @@ Scenario: A user creates a new user record
   And the user clicks the button "Create User"
   Then the page should add a new user
 
-@stub_workload
+@edit_user
 Scenario: User edits an existing user record
   Given a user visits a given user record
   Then the user presses the button "Edit This User"
