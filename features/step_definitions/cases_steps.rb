@@ -35,14 +35,10 @@ end
 
 
 Given(/^hits the "([^"]*)" button$/) do |arg1|
-  stub_request(:post, %r{.*\/cases})
-    .to_return(status: 200, body: "The mountain stirs once more".to_json, headers: {})
-
   click_button(arg1)
 end
 
 Then(/^a link to the new case should be appended to the list of cases$/) do
-  byebug
   page.has_text?("The mountain stirs once more")
 end
 
@@ -51,17 +47,18 @@ end
 #========================================#
 
 Given(/^a user visits a given case's page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit show_case_path(1)
 end
 
 Given(/^fills out the form for a new description$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+
+  fill_in 'case_description', :with => "New Description"
 end
 
 Given(/^presses the "([^"]*)" button$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button(arg1)
 end
 
 Then(/^the show page should reflect the new description$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.has_text?("New Description")
 end
