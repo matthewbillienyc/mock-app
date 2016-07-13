@@ -7,14 +7,14 @@ Scenario: A user visits the main page
   And the user clicks the link "All Users"
   Then the page navigates to a list of all users
 
-@stub_workload
+@create_user
 Scenario: A user creates a new user record
   Given a user visits the list of all users
   Then enters a first and last name into the register user fields
   And the user clicks the button "Create User"
   Then the page should add a new user
 
-@stub_workload
+@edit_user
 Scenario: User edits an existing user record
   Given a user visits a given user record
   Then the user presses the button "Edit This User"

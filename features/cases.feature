@@ -10,7 +10,7 @@ Scenario: A user visits a specific case
   Given a user visiting the specific case
   Then the page should show the description of the case and the user that filed it
 
-@stub_workload
+@create_case
 Scenario: A user creates a new case
   Given a user visits the case index page
   And fills out the form for a new case

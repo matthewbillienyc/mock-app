@@ -1,3 +1,13 @@
-<b>Description:</b>
-<%= @case.description %><br><br>
-<b>As filed by: </b><%= link_to @user.name, show_user_path(@case.user_id) %>
+
+<span id="hidden-form"><%= form_for @case do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+  <%= f.submit "Update Case", class:"update-case" %>
+<% end %>
+</span>
+<div id="description">Description:
+<%= @case.description %></div><br><br>
+As filed by: <%= link_to @user.name, show_user_path(@case.user_id) %>
+
+<br>
+<div id="container"><button id="edit">Edit This User</button></div>

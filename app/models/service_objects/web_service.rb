@@ -20,8 +20,7 @@ class WebService
   end
 
   def self.get_account_for_user(id)
-    # stuff
-    url= "#{BASE_URI}/#{EXTENSION}/#{ACCOUNTS}/#{id}"
+    url= "#{BASE_URI}/#{EXTENSION}/#{ACCOUNTS}/1"
     request = get(url)
     account= JSON.parse(request.body)
     Account.new(account)
@@ -43,8 +42,9 @@ class WebService
   end
 
   def self.put_update_user(id, name)
+    byebug
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{id}"
-
+    
     put(url, :query => {first_name: name[:first_name], last_name: name[:last_name]})
   end
 
@@ -72,6 +72,11 @@ class WebService
   def self.post_new_case(params)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}"
     post(url, :query => {description: params[:description], user_id: 1})
+  end
+
+  def self.put_update_case(id, description)
+    url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
+    put(url, :query => {description: description})
   end
 
 end
