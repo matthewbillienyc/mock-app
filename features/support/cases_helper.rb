@@ -11,6 +11,21 @@ Before('@stub_workload') do
 end
 
 
+Before('@create_user') do
+  stub_create_user
+  stub_users
+end
+
+Before('@create_case') do
+  stub_create_case
+  stub_cases
+end
+
+Before('@edit_user') do
+  stub_single_user
+  stub_edit_user
+end
+
 
 
 # PUT STUB METHODS AND METHODS THAT RETURN FAKE DATA HERE
@@ -24,6 +39,27 @@ def stub_single_case
   stub_request(:get, %r{.*\/cases/\d}).
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
     to_return(:status => 200, :body => dummy_cases[0].to_json, :headers => {})
+end
+
+def stub_create_case
+  stub_request(:post, "http://localhost:8080/mockapi/cases?description=The%20mountain%20stirs%20once%20more&user_id=1").
+    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+    to_return(:status => 200, :body => "", :headers => {})
+
+end
+
+
+
+def stub_create_user
+  stub_request(:post, "http://localhost:8080/mockapi/users?first_name=Capy&last_name=Bara").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => "", :headers => {})
+end
+
+def stub_edit_user
+  stub_request(:post, "http://localhost:8080/mockapi/users?first_name=Capy&last_name=Bara").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => "", :headers => {})
 end
 
 def stub_users

@@ -42,7 +42,8 @@ end
 #             ###Edit Records###          #
 #=========================================#
 Given(/^a user visits a given user record$/) do
-  visit 'users/1'
+  byebug
+  visit show_user_path(1)
 end
 
 Then(/^the user presses the button "(.*?)"$/) do |button_text|
