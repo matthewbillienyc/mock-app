@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
   $('#hidden-form').hide()
   $('button#edit').on("click", function(event){
     var url = window.location.href;
@@ -18,12 +18,13 @@ $(function(){
         url: '/users/' + user_id,
         method: 'PUT',
         data: {name: {first_name: newFirst, last_name: newLast}},
-        complete: function(event, request, options){
-          $('#name').html("<strong>Name: </strong>"+event.first_name+" "+ event.last_name);
+        complete: function(event, request, options){  
+          newFirst = JSON.parse(event.responseText).first_name
+          newLast = JSON.parse(event.responseText).last_name
+          $('#name').html("<strong>Name: </strong>"+ newFirst+" "+ newLast);
           $('#name').show()
           $('#hidden-form').hide()
           $('button#edit').css("display", "inline");
-
         }
       })
     })
