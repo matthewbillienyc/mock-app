@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/cases/users/:id' => 'cases#all_by_user'
   post '/cases' => 'cases#create', as: :new_case
   put '/cases/:id' => 'cases#update'
+  post '/logon' => 'session#create'
+  get '/logon' => 'session#new'
 
 
   get '/accounts/:id' => 'accounts#show', as: :show_account

@@ -1,3 +1,9 @@
+<% if logged_on? %>
+  <div>
+    Hello! <%= session[:email] %>
+  </div>
+  <% end %>
+  
 <div class='container'>
   <h3>Users:</h3>
   <ul>

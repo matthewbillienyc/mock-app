@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require users
-//= require_tree .
+//= require superhero
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require_tree
+

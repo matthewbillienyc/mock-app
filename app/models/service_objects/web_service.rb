@@ -38,7 +38,7 @@ class WebService
     # post(url, :body => { first_name: first_name, last_name: last_name }.to_json)
 
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
-    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name]})
+    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
   end
 
   def self.put_update_user(id, name)
@@ -77,6 +77,12 @@ class WebService
   def self.put_update_case(id, description)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
     put(url, :query => {description: description})
+  end
+
+  def self.logon(email, password)
+    url= "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{LOGON}"
+    byebug
+    post(url, :query => {email: email, password: password})
   end
 
 end

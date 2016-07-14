@@ -10,4 +10,10 @@ module ApplicationHelper
   def get_user_account
     @account = WebService.get_account_for_user(1)
   end
+
+
+  def logged_on?
+    !session[:email].blank?
+  end
+  
 end
