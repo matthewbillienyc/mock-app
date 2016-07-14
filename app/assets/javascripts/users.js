@@ -14,7 +14,9 @@ $(document).ready(function() {
       method: 'POST',
       data: {user: {first_name: first_name, last_name: last_name}},
       complete: function(event, request, options){
-        $('ul').append('<li><a href="/users/'+ currentID + '">'+ event.first_name +" "+ event.last_name+'</a></li>')
+        var firstName= JSON.parse(event.responseText).first_name
+        var lastName= JSON.parse(event.responseText).last_name
+        $('ul').append('<li><a href="/users/'+ currentID + '">'+ firstName +" "+ lastName +'</a></li>')
       }
     })
   })
