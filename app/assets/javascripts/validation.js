@@ -13,6 +13,9 @@ $(document).ready(function() {
       },
       "user[last_name]": {
         required: $("#user_first_name").val().length < 5
+      },
+      "user[password]":{
+        required: true
       }
     },
     messages: {
@@ -24,6 +27,9 @@ $(document).ready(function() {
       },
       "user[last_name]": {
         required: "Last name required if your first name is less than 5 characters."
+      },
+      "user[password]":{
+        required: "This is a required field."
       }
     },
     onfocusout: function(element) {
