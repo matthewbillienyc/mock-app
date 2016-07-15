@@ -21,7 +21,8 @@ Before('@edit_user') do
   stub_single_account
 end
 
-Before('edit_case') do
+Before('@edit_case') do
+  stub_single_user
   stub_single_case
   stub_edit_case
 end
@@ -74,7 +75,7 @@ def stub_edit_user
 end
 
 def stub_edit_case
-  stub_request(:post, "http://localhost:8080/mockapi/cases?description=The%20mountain%20stirs%20once%20more&user_id=1").
+  stub_request(:post, "http://localhost:8080/mockapi/cases?description=New%20Description&user_id=1").
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
     to_return(:status => 200, :body => "", :headers => {})
 end

@@ -1,8 +1,4 @@
-$(function() {
-  // put a listener on your form on submit or on your submit button on click (give it some unique id)
-  // preventDefault action
-  // capture form params and send them with ajax call to your controller
-  // on success, update the page with jquery somewhere showing the new user was posted successfully
+$(document).ready(function() {
   $('.create-user').click(function(event){
     event.preventDefault();
     debugger;
@@ -17,8 +13,10 @@ $(function() {
       url: '/users',
       method: 'POST',
       data: {user: {first_name: first_name, last_name: last_name}},
-      success: function(event, request, options){
-        $('ul').append('<li><a href="/users/'+ currentID + '">'+ event.first_name +" "+ event.last_name+'</a></li>')
+      complete: function(event, request, options){
+        var firstName= JSON.parse(event.responseText).first_name
+        var lastName= JSON.parse(event.responseText).last_name
+        $('ul').append('<li><a href="/users/'+ currentID + '">'+ firstName +" "+ lastName +'</a></li>')
       }
     })
   })
