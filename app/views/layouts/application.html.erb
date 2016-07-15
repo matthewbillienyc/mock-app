@@ -37,7 +37,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if admin? %>
-          <a href="#">Fancy admin features!</a>
+          <li><a href="#">Fancy admin features!</a></li>
           <% end %>
         </ul>
       </div>
@@ -46,7 +46,7 @@
 <%= render 'layouts/header' %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<div class="container"
+<div class="container">
 <%= yield %>
 </div>
 </body>

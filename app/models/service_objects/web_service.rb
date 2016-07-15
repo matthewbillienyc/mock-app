@@ -4,7 +4,13 @@ class WebService
   include HTTParty
   format :json
 
-
+  def self.rate_popsicle(email, sn, rating, text)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/rate"
+    headers = { "Logon-Id" => email }
+    query={email: email, serial_number: sn, rating: rating, response_text: text}
+    response = post(url, headers: headers, query: query)
+    JSON.parse(response.body)
+  end
 
   def self.get_popsicle_summaries(email)
     url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}"
@@ -14,6 +20,14 @@ class WebService
     summaries.map do |summary|
       PopsicleSummary.new(summary)
     end
+  end
+
+  def self.get_popsicle_details(email, serial_number)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/#{serial_number}"
+    headers = { "Logon-Id" => email }
+    response = get(url, headers: headers)
+    popsicle = JSON.parse(response.body)
+    Popsicle.new(popsicle)
   end
 
   def self.get_all_users
