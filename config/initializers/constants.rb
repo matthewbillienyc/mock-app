@@ -4,3 +4,4 @@ USERS= "users".freeze
 CASES= "cases".freeze
 ACCOUNTS = "accounts".freeze
 LOGON = "logon".freeze
+POPSICLES = "popsicles".freeze

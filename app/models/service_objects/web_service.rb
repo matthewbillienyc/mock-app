@@ -6,8 +6,17 @@ class WebService
 
 
 
-  def self.get_all_users
+  def self.get_popsicle_summaries(email)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}"
+    headers = { "Logon-Id" : email }
+    response = get(url, headers: headers)
+    summaries = JSON.parse(response.body)
+    summaries.map do |summary|
+      PopsicleSummary.new(summary)
+    end
+  end
 
+  def self.get_all_users
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
     request = get(url)
     users = JSON.parse(request.body)
@@ -81,7 +90,6 @@ class WebService
   def self.logon(email, password)
     url= "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{LOGON}"
     post(url, :query => {email: email, password: password}).parsed_response
-
   end
 
 end

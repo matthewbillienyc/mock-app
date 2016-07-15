@@ -24,4 +24,8 @@ module ApplicationHelper
     session[:role] == 'admin'
   end
 
+  def check_logged_on
+    redirect_to root_path unless logged_on?
+  end
+
 end
