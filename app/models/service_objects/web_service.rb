@@ -8,7 +8,7 @@ class WebService
 
   def self.get_popsicle_summaries(email)
     url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}"
-    headers = { "Logon-Id" : email }
+    headers = { "Logon-Id" => email }
     response = get(url, headers: headers)
     summaries = JSON.parse(response.body)
     summaries.map do |summary|

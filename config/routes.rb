@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/logon' => 'session#new'
   get '/logout' => 'session#destroy'
 
+  get '/popsicles' => 'popsicles#index'
+  get '/popsicles/:id' => 'popsicles#show'
 
   get '/accounts/:id' => 'accounts#show', as: :show_account
   # The priority is based upon order of creation: first created -> highest priority.
