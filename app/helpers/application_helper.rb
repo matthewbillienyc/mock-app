@@ -15,5 +15,13 @@ module ApplicationHelper
   def logged_on?
     !session[:email].blank?
   end
-  
+
+  def set_role(role)
+    session[:role] = role
+  end
+
+  def admin?
+    session[:role] == 'admin'
+  end
+
 end

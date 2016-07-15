@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   put '/cases/:id' => 'cases#update'
   post '/logon' => 'session#create'
   get '/logon' => 'session#new'
+  get '/logout' => 'session#destroy'
 
 
   get '/accounts/:id' => 'accounts#show', as: :show_account

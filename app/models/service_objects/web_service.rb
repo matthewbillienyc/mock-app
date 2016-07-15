@@ -42,7 +42,6 @@ class WebService
   end
 
   def self.put_update_user(id, name)
-    byebug
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{id}"
 
     put(url, :query => {first_name: name[:first_name], last_name: name[:last_name]})
@@ -81,8 +80,8 @@ class WebService
 
   def self.logon(email, password)
     url= "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{LOGON}"
-    byebug
-    post(url, :query => {email: email, password: password})
+    post(url, :query => {email: email, password: password}).parsed_response
+
   end
 
 end
