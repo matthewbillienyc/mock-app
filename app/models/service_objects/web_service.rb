@@ -4,6 +4,24 @@ class WebService
   include HTTParty
   format :json
 
+  def self.get_notes(email, popsicle_serial_number)
+    url = "#{BASE_URI}/#{EXTENSION}/#{NOTES}/#{popsicle_serial_number}"
+    headers = { "Logon-Id" => email }
+    response = get(url, headers: headers)
+    notes = JSON.parse(response.body)
+    notes.map do |note|
+      Note.new(note)
+    end
+  end
+
+  def self.post_note(email, popsicle_serial_number, text, importance)
+    url = "#{BASE_URI}/#{EXTENSION}/#{NOTES}"
+    headers = { "Logon-Id" => email }
+    query = { email: email, popsicle_serial_number: popsicle_serial_number, text: text, importance: importance }
+    response = post(url, headers: headers, query: query)
+    JSON.parse(response.body)
+  end
+
   def self.rate_popsicle(email, sn, rating, text)
     url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/rate"
     headers = { "Logon-Id" => email }

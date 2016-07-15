@@ -5,3 +5,4 @@ CASES= "cases".freeze
 ACCOUNTS = "accounts".freeze
 LOGON = "logon".freeze
 POPSICLES = "popsicles".freeze
+NOTES = 'notes'.freeze
