@@ -35,7 +35,7 @@ end
 
 ###SHOW STUBS ###
 def stub_single_user
-  stub_request(:get, %r{.*\/users/\d}).
+  stub_request(:get, %r{.*/users/\d}).
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
     to_return(:status => 200, :body => dummy_users[0].to_json, :headers => {})
 end
