@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/logon' => 'session#new'
   get '/logout' => 'session#destroy'
 
-  get '/popsicles' => 'popsicles#index'
+  get '/popsicles' => 'popsicles#index', as: :popsicles
   get '/popsicles/:serial_number' => 'popsicles#show', as: :popsicle
   post '/rate_popsicle' => 'popsicles#rate', as: :rate_popsicle
 
