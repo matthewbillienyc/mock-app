@@ -97,7 +97,6 @@ def stub_users
     to_return(:status => 200, :body => dummy_users.to_json, :headers => {})
 end
 
-
 def stub_cases
   stub_request(:get, %r{.*\/cases}).
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
@@ -126,5 +125,6 @@ def dummy_account
 end
 
 def dummy_popsicles
-  [{}]
+  [{flavor: "Rustic Cotton Lamp", color: "grey", rating: "5", shape: "round", serial_number: "77836575", company_id: 1, status: "U"},
+   {flavor: "Aerodynamic Granite Keyboard", color: "turquoise", rating: "0", shape: "round", serial_number: "12911973", company_id: 4, status: "U"}]
 end
