@@ -39,9 +39,4 @@ $(function() {
       })
     }
   });
-
-  $("div.revealModal#myModal").close();
-  $('#notes > a').click(function(){
-    $("div.revealModal#myModal").open();
-  })
 });

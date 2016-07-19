@@ -68,7 +68,7 @@ end
 
 ###EDIT STUBS###
 def stub_edit_user
-  stub_request(:post, "http://localhost:8080/mockapi/users?first_name=Capy&last_name=Bara").
+  stub_request(:post, "http://localhost:8080/mockapi/users?email=&first_name=Capy&last_name=Bara&password=&password_confirmation=").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => "", :headers => {})
 end
