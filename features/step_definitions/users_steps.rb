@@ -6,7 +6,9 @@ Given(/^a user visits the main page$/) do
 end
 
 Then(/^the user sees the field "(.*?)"$/) do |link_text|
-  expect(page).to have_content(link_text)
+  stub_request(:get, "http://localhost:8080/mockapi/users").
+  to_return(:status => 200, :body => "", :headers => {})
+  has_content?(link_text)
 end
 
 And(/^the user clicks the link "(.*?)"$/) do |link_text|

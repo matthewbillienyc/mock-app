@@ -44,8 +44,7 @@ class WebService
     url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/#{serial_number}"
     headers = { "Logon-Id" => email }
     response = get(url, headers: headers)
-    popsicle = JSON.parse(response.body)
-    Popsicle.new(popsicle)
+    Popsicle.new(response.parsed_response)
   end
 
   def self.get_all_users
