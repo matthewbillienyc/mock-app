@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   get '/cases/users/:id' => 'cases#all_by_user'
   post '/cases' => 'cases#create', as: :new_case
   put '/cases/:id' => 'cases#update'
+  post '/logon' => 'session#create'
+  get '/logon' => 'session#new'
+  get '/logout' => 'session#destroy'
 
+  get '/popsicles' => 'popsicles#index'
+  get '/popsicles/:serial_number' => 'popsicles#show', as: :popsicle
+  post '/rate_popsicle' => 'popsicles#rate', as: :rate_popsicle
 
   get '/accounts/:id' => 'accounts#show', as: :show_account
   # The priority is based upon order of creation: first created -> highest priority.

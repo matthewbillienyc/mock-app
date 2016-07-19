@@ -1,0 +1,7 @@
+<h1>Log In</h1>
+
+<%= form_tag(url: '/logon', id: 'logon') do %>
+  <%= text_field_tag :email %>
+  <%= password_field_tag :password %>
+  <%= submit_tag 'Log On!' %>
+<% end %>

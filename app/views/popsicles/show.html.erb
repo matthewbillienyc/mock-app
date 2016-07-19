@@ -1,0 +1,103 @@
+<div class="row">
+  <h2> Popsicle Info</h2>
+  <div class="jumbotron" id="popsicle_info">
+    <ul class="list-group">
+      <li class="list-group-item"><%= @popsicle.serial_number %></li>
+      <li class="list-group-item"><%= @popsicle.flavor %></li>
+      <li class="list-group-item"><%= @popsicle.color %></li>
+      <li class="list-group-item"><%= @popsicle.rating %></li>
+      <li class="list-group-item"><%= @popsicle.shape %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <h2> Stick Info</h2>
+
+  <div class="jumbotron" id="stick_info">
+    <ul class="list-group">
+      <li class="list-group-item"><%= @popsicle.stick.wood_type %></li>
+      <li class="list-group-item"><%= @popsicle.stick.color %></li>
+      <li class="list-group-item"><%= @popsicle.stick.centimeters %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <h2> Joke Info</h2>
+  <div class="jumbotron" id="joke_info">
+    <ul class="list-group">
+      <li class="list-group-item"><%= @popsicle.stick.joke.question %></li>
+      <li class="list-group-item"><%= @popsicle.stick.joke.punchline %></li>
+      <li class="list-group-item"><%= @popsicle.stick.joke.funniness %></li>
+      <li class="list-group-item"><%= @popsicle.stick.joke.dirtiness %></li>
+      <li class="list-group-item"><%= @popsicle.stick.joke.author %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Popsicle Rating</h2>
+  <div class="jumbotron" id="popsicle_rating" style="height:300px;">
+    <div id="popsicle-form-div">
+      <%= form_tag '/rate_popsicle', id: 'rate_popsicle' do %>
+      <%= hidden_field_tag :serial_number, @popsicle.serial_number %>
+
+        <div class="col-lg-2">
+          <div class="form-group">
+            <%= label_tag :rating %>
+          </div>
+          <div class="form-group">
+            <%= select_tag :rating, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]]) %>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="form-group">
+            <%= label_tag :response_text %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag :response_text, nil, class: 'large-text-area' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= submit_tag 'Rate Popsicle', class: 'btn-info' %>
+        </div>
+      <% end %>
+    </div>
+    <div id="popsicle-response-read-only-div">
+      <ul class="list-group" id="rating_list">
+        <% if @popsicle.response.rating.present? %>
+          <li class="list-group-item">Rating: <%= @popsicle.response.rating %></li>
+          <li class="list-group-item">Description: <%= @popsicle.response.response_text %></li>
+        <% end %>
+      </ul>
+      <%= button_tag 'Update Rating', class: 'btn-info', id: 'update_rating' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Company Info</h2>
+  <div class="jumbotron" id="company_info">
+    <ul class="list-group">
+      <li class="list-group-item"><%= @popsicle.company.name %></li>
+      <li class="list-group-item"><%= @popsicle.company.popsicle_varieties %> varities of popsicles</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <h2> Notes</h2>
+  <div class="jumbotron" id="notes">
+    <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
+
+  </div>
+</div>
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

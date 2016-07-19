@@ -56,6 +56,9 @@ Given(/^fills out the form for a new description$/) do
 end
 
 Given(/^presses the "([^"]*)" button$/) do |arg1|
+  stub_request(:post, "http://localhost:8080/mockapi/cases?description=New%20Description&user_id=1").
+      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      to_return(:status => 200, :body => "", :headers => {})
   click_button(arg1)
 end
 

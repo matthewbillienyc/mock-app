@@ -1,9 +1,30 @@
 <h3>Register user </h3>
 
-<%= form_for @user do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <%= f.submit "Create User" %>
-<% end %>
+<div class="form-horizontal">
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="form-group">  
+      <%= f.submit "Create User" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="user_info">
+</div>

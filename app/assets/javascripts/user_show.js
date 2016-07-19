@@ -18,7 +18,7 @@ $(document).ready(function(){
         url: '/users/' + user_id,
         method: 'PUT',
         data: {name: {first_name: newFirst, last_name: newLast}},
-        complete: function(event, request, options){  
+        complete: function(event, request, options){
           newFirst = JSON.parse(event.responseText).first_name
           newLast = JSON.parse(event.responseText).last_name
           $('#name').html("<strong>Name: </strong>"+ newFirst+" "+ newLast);

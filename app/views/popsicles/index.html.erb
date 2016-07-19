@@ -1,0 +1,25 @@
+<div class="row">
+  <table class="table table-striped table-hover" id="popsicle_summaries">
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Flavor</th>
+        <th>Joke Funniness</th>
+        <th>Stick Wood Type</th>
+        <th>Company Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @popsicles.each do |p| %>
+        <tr>
+          <td><%= link_to p.serial_number, popsicle_path(p.serial_number) %></td>
+          <td><%= p.flavor %></td>
+          <td><%= p.joke_funniness %></td>
+          <td><%= p.stick_wood_type %></td>
+          <td><%= p.company_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- :flavor, :joke_funniness, :stick_wood_type, :company_n -->

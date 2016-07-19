@@ -4,10 +4,51 @@ class WebService
   include HTTParty
   format :json
 
+  def self.get_notes(email, popsicle_serial_number)
+    url = "#{BASE_URI}/#{EXTENSION}/#{NOTES}/#{popsicle_serial_number}"
+    headers = { "Logon-Id" => email }
+    response = get(url, headers: headers)
+    notes = JSON.parse(response.body)
+    notes.map do |note|
+      Note.new(note)
+    end
+  end
 
+  def self.post_note(email, popsicle_serial_number, text, importance)
+    url = "#{BASE_URI}/#{EXTENSION}/#{NOTES}"
+    headers = { "Logon-Id" => email }
+    query = { email: email, popsicle_serial_number: popsicle_serial_number, text: text, importance: importance }
+    response = post(url, headers: headers, query: query)
+    JSON.parse(response.body)
+  end
+
+  def self.rate_popsicle(email, sn, rating, text)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/rate"
+    headers = { "Logon-Id" => email }
+    query={email: email, serial_number: sn, rating: rating, response_text: text}
+    response = post(url, headers: headers, query: query)
+    JSON.parse(response.body)
+  end
+
+  def self.get_popsicle_summaries(email)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}"
+    headers = { "Logon-Id" => email }
+    response = get(url, headers: headers)
+    summaries = JSON.parse(response.body)
+    summaries.map do |summary|
+      PopsicleSummary.new(summary)
+    end
+  end
+
+  def self.get_popsicle_details(email, serial_number)
+    url = "#{BASE_URI}/#{EXTENSION}/#{POPSICLES}/#{serial_number}"
+    headers = { "Logon-Id" => email }
+    response = get(url, headers: headers)
+    popsicle = JSON.parse(response.body)
+    Popsicle.new(popsicle)
+  end
 
   def self.get_all_users
-
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
     request = get(url)
     users = JSON.parse(request.body)
@@ -38,7 +79,7 @@ class WebService
     # post(url, :body => { first_name: first_name, last_name: last_name }.to_json)
 
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
-    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name]})
+    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
   end
 
   def self.put_update_user(id, name)
@@ -56,8 +97,7 @@ class WebService
   def self.get_single_case_by(id)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
     request = get(url)
-    cas = JSON.parse(request.body)
-    Case.new(description: request.parsed_response['description'], user_id: request.parsed_response['user_id'])
+    cas = Case.new(description: request.parsed_response["description"], user_id: request.parsed_response['user_id'])
   end
 
   def self.get_all_cases_by_user(id)
@@ -75,6 +115,11 @@ class WebService
   def self.put_update_case(id, description)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
     put(url, :query => {description: description})
+  end
+
+  def self.logon(email, password)
+    url= "#{BASE_URI}/#{EXTENSION}/#{USERS}/#{LOGON}"
+    post(url, :query => {email: email, password: password}).parsed_response
   end
 
 end
