@@ -1,9 +1,11 @@
 Feature: Popsicles Feature
 
+@stub_popsicles
 Scenario: A user visits the popsicle index
   Given a user visits the popsicles page
   Then the page will display all popsicles
 
+@stub_popsicles
 Scenario: A user visits a particular popsicle's page
   Given a user visits a specific popsicle's page
   Then the page should display Joke info, company info, stick info, popsicle info, and a rating option

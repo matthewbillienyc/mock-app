@@ -1,15 +1,15 @@
 Given(/^a user visits the popsicles page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit popsicles_path
 end
 
 Then(/^the page will display all popsicles$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  has_content?('#popsicle_summaries')
 end
 
 
 
 Given(/^a user visits a specific popsicle's page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit popsicle_path(1)
 end
 
 Then(/^the page should display Joke info, company info, stick info, popsicle info, and a rating option$/) do
