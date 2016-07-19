@@ -98,8 +98,7 @@ class WebService
   def self.get_single_case_by(id)
     url = "#{BASE_URI}/#{EXTENSION}/#{CASES}/#{id}"
     request = get(url)
-    cas = JSON.parse(request.body)
-    Case.new(description: request.parsed_response['description'], user_id: request.parsed_response['user_id'])
+    cas = Case.new(description: request.parsed_response["description"], user_id: request.parsed_response['user_id'])
   end
 
   def self.get_all_cases_by_user(id)

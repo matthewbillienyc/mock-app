@@ -17,7 +17,7 @@ Scenario: A user creates a new case
   And hits the "Create Case" button
   Then a link to the new case should be appended to the list of cases
 
-@edit_case
+@stub_workload
 Scenario: A user edits an existing case
   Given a user visits a given case's page
   And fills out the form for a new description
