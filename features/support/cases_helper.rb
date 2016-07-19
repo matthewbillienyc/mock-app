@@ -5,6 +5,7 @@ Before('@stub_workload') do
   stub_single_case
 end
 
+
 Before('@create_user') do
   stub_create_user
   stub_users
@@ -21,12 +22,15 @@ Before('@edit_user') do
   stub_single_account
 end
 
-Before('edit_case') do
+Before('@edit_case') do
   stub_single_case
   stub_edit_case
 end
 
-
+Before('@stub_popsicles') do
+  stub_popsicles
+  stub_single_popsicle
+end
 
 
 ###SHOW STUBS ###
@@ -48,6 +52,12 @@ def stub_single_account
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
     to_return(:status => 200, :body => dummy_account.to_json, :headers => {})
 end
+
+def stub_single_popsicle
+  stub_request(:get, "http://localhost:8080/mockapi/popsicles/1").
+    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+    to_return(:status => 200, :body => dummy_popsicles[0].to_json, :headers => {})
+end
 #========================================#
 
 
@@ -60,23 +70,23 @@ def stub_create_case
 end
 
 def stub_create_user
-  stub_request(:post, "http://localhost:8080/mockapi/users?first_name=Capy&last_name=Bara").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => "", :headers => {})
+  stub_request(:post, "http://localhost:8080/mockapi/users?email=&first_name=Capy&last_name=Bara&password=&password_confirmation=").
+       with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+       to_return(:status => 200, :body => "", :headers => {})
 end
 #========================================#
 
 ###EDIT STUBS###
 def stub_edit_user
-  stub_request(:post, "http://localhost:8080/mockapi/users?first_name=Capy&last_name=Bara").
+  stub_request(:post, "http://localhost:8080/mockapi/users?email=&first_name=Capy&last_name=Bara&password=&password_confirmation=").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => "", :headers => {})
 end
 
 def stub_edit_case
-  stub_request(:post, "http://localhost:8080/mockapi/cases?description=The%20mountain%20stirs%20once%20more&user_id=1").
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => "", :headers => {})
+  stub_request(:post, "http://localhost:8080/mockapi/cases?description=New%20Description&user_id=1").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => "", :headers => {})
 end
 #========================================#
 
@@ -93,6 +103,12 @@ def stub_cases
     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
     to_return(:status => 200, :body => dummy_cases.to_json, :headers => {})
 end
+
+def stub_popsicles
+  stub_request(:get, %r{.*\/popsicles}).
+    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+    to_return(:status => 200, :body => dummy_popsicles.to_json, :headers => {})
+end
 #========================================#
 
 ### Dummy Info ###
@@ -107,4 +123,8 @@ end
 
 def dummy_account
   { employer: 'something', account_number: '12345', organization: { name: 'CIA', state: 'VA' } }
+end
+
+def dummy_popsicles
+  [{}]
 end
