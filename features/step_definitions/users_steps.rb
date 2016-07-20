@@ -34,8 +34,8 @@ Given (/^a user is logged in on the popsicles workload table$/) do
   visit_popsicles_path
 end
 
-And (/^the user clicks logout$/) do
-  click_link 'Logout'
+And (/^the user clicks link "(.*?)"$/) do |link_text|
+  click_link link_text
 end
 
 Then (/^the user is logged out$/) do

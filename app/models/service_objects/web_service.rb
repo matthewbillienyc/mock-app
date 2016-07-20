@@ -50,7 +50,6 @@ class WebService
   def self.get_all_users
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
     request = get(url)
-    byebug
     users = JSON.parse(request.body)
     users.sort_by!{|user| user["id"]}
     users.map do |user|
@@ -78,7 +77,9 @@ class WebService
     # post(url, :body => { first_name: first_name, last_name: last_name }.to_json)
 
     url = "#{BASE_URI}/#{EXTENSION}/#{USERS}"
-    post(url, :query => {first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
+    response = post(url, :query => {first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation]})
+    user = JSON.parse(response.body)
+    User.new(user)
   end
 
   def self.put_update_user(id, name)

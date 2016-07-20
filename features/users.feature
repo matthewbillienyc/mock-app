@@ -18,6 +18,6 @@ Scenario: An admin user can sign in
 Scenario: A user can sign in
   Given a user is on the login page
   And the user enters credentials and clicks log in
-  And the user clicks logout
+  And the user clicks link "Logout"
   Then the user is logged out
  

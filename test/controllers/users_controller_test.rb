@@ -2,6 +2,7 @@ require 'test_helper'
 require 'mocha/mini_test'
 
 class UsersControllerTest < ActionController::TestCase
+  include PopsiclesDataHelper
   # test "the truth" do
   #   assert true
   # end
@@ -66,17 +67,20 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     describe 'create' do
-
-      it 'posts data to the API' do
-        user = {first_name: "Frames", last_name: "Janco"}
+      before do
+        stub_popsicle_summaries
         stub_request(:post, %r{.*\/accounts})
           .to_return(status: 200, body: " ", headers: {})
+        user = { email: 'test@test.com' }
         stub_request(:post, %r{.*\/users})
-          .to_return(status: 200, body: " ", headers: {})
+          .to_return(status: 200, body: user.to_json, headers: {})
+      end
+      it 'posts data to the API' do
+        params = { user: { email: "Frames", password: "Janco", password_confirmation: 'Janco' } }
+        
+        post :create, params
 
-        post :create, name: user
-
-        assert_response 200
+        assert_redirected_to popsicles_path
       end
     end
 
