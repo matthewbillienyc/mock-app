@@ -19,3 +19,4 @@ Scenario: A user can sign in
   Given a user is logged in on the popsicles workload table
   And the user clicks logout
   Then the user is logged out
+ 
