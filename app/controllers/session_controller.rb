@@ -18,10 +18,4 @@ class SessionController < ApplicationController
     session.delete("email")
     redirect_to root_path
   end
-
-  private
-
-  def logon(email)
-    session[:email] = email
-  end
 end

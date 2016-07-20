@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'logins/new'
-
-  get 'logins/create'
-
-  devise_for :logins
   root 'application#index'
   get '/users' => 'users#index'
   get '/users/new' => 'users#new', as: :register
@@ -13,14 +8,9 @@ Rails.application.routes.draw do
   get '/users/:id' => 'users#show', as: :show_user
   get '/users/:id/edit' => 'users#edit', as: :edit_user
 
-  get '/cases' => 'cases#index'
-  get '/cases/:id' => 'cases#show', as: :show_case
-  get '/cases/users/:id' => 'cases#all_by_user'
-  post '/cases' => 'cases#create', as: :new_case
-  put '/cases/:id' => 'cases#update'
   post '/logon' => 'session#create'
-  get '/logon' => 'session#new'
-  get '/logout' => 'session#destroy'
+  get '/logon' => 'session#new', as: :logon_page
+  get '/logout' => 'session#destroy', as: :logout
 
   get '/popsicles' => 'popsicles#index', as: :popsicles
   get '/popsicles/:serial_number' => 'popsicles#show', as: :popsicle
