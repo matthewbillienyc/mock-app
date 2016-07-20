@@ -5,13 +5,17 @@ module PopsiclesDataHelper
   end
 
   def stub_popsicle_details(serial_number)
-    stub_request(:get, %r{.*\/rate_popsicle}).
-      with(:headers => {'Logon-Id' => 'test@test.com'})
+    stub_request(:get, %r{.*\/popsicles/#{serial_number}})
       .to_return(status: 200, body: popsicle_details.to_json, headers:{})
   end
 
-  def stub_rate_popsicle(serial_number)
-    stub_request(:post, %r{.*\/popsicles\/#{serial_number}}).
+  # always use the regex
+  def stub_rate_popsicle(serial_number, body)
+    stub_request(:post, %r{.*\/popsicles\/rate})
+      .to_return(status: 200, body: body.to_json, headers: {})
+  end
+
+  private
 
   def popsicle_summaries
     [
@@ -62,6 +66,6 @@ module PopsiclesDataHelper
               rating:nil,
               response_text:nil
             }
-      }
+          }
   end
 end

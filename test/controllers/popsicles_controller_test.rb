@@ -38,7 +38,6 @@ class PopsiclesControllerTest < ActionController::TestCase
 
     describe 'rate' do
       before do
-        #arrange
         @serial_number = 1234556
         stub_popsicle_details(@serial_number)
         session[:email] = 'test@test.com'
@@ -46,10 +45,14 @@ class PopsiclesControllerTest < ActionController::TestCase
       end
       #act
       it 'should update the updating to reflect the user input' do
+        expected_response = { response: { rating: 5, response_text: 'pretty effin good' }, status: 'R' }
+        stub_rate_popsicle(@serial_number, expected_response)
+
         post :rate, params: @query
-      #assert
+        #assert
         assert 200
-        assert_template :show
+        
+        # this method renders json so you don't want to assert a template
       end
     end
   end
