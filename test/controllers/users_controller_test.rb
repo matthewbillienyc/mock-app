@@ -77,7 +77,7 @@ class UsersControllerTest < ActionController::TestCase
       end
       it 'posts data to the API' do
         params = { user: { email: "Frames", password: "Janco", password_confirmation: 'Janco' } }
-        
+
         post :create, params
 
         assert_redirected_to popsicles_path
@@ -106,7 +106,7 @@ class UsersControllerTest < ActionController::TestCase
         user = { first_name: 'Bob', last_name: 'Franco' }
         account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
         stub_request(:put, "http://localhost:8080/mockapi/users/1?first_name=Bob&last_name=Franco").
-          with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+          with(headers: {}).
           to_return(:status => 200, :body => "", :headers => {})
 
         post :update, id: 1, name: user
