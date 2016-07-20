@@ -16,7 +16,8 @@ Scenario: An admin user can sign in
 
 @stub_logon @stub_popsicle_summaries
 Scenario: A user can sign in
-  Given a user is logged in on the popsicles workload table
+  Given a user is on the login page
+  And the user enters credentials and clicks log in
   And the user clicks logout
   Then the user is logged out
  
