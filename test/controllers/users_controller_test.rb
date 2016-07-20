@@ -86,10 +86,8 @@ class UsersControllerTest < ActionController::TestCase
       it 'displays the edit form for a new user' do
         user = { first_name: 'Bob', last_name: 'Franco' }
         account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
-        stub_request(:get, %r{.*\/accounts/\d})
-          .to_return(status: 200, body: account.to_json, headers: {})
-        stub_request(:get, %r{.*\/users/\d})
-          .to_return(status: 200, body: user.to_json, headers: {})
+        stub_user(user)
+        stub_account(account)
 
         get :edit, id: 1
 

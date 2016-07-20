@@ -5,7 +5,7 @@ class PopsiclesControllerTest < ActionController::TestCase
   include PopsiclesDataHelper
 
   describe 'PopsiclesControllerTest' do
-    describe 'index' do
+    describe 'index logged in' do
       before do
         session[:email] = 'test@test.com'
         stub_popsicle_summaries
@@ -19,6 +19,15 @@ class PopsiclesControllerTest < ActionController::TestCase
         # assert
         assert_response 200
         assert_template :index
+      end
+    end
+
+    describe 'index not logged in' do
+      it 'should redirect to root if not logged in' do
+        get :index
+
+        assert_response 302
+        assert_redirected_to root_path
       end
     end
 

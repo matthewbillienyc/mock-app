@@ -1,7 +1,7 @@
 require 'service_objects/web_service'
 
 class PopsiclesController < ApplicationController
-  before_action :check_logged_on, only: [:index]
+  before_action :check_logged_on, only: [:index, :show, :rate]
 
   def index
     @popsicles = WebService.get_popsicle_summaries(session[:email])

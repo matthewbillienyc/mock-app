@@ -15,7 +15,7 @@ module PopsiclesDataHelper
       .to_return(status: 200, body: body.to_json, headers: {})
   end
 
-  private
+  private  
 
   def popsicle_summaries
     [
