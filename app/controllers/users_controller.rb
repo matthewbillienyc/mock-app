@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def create
     @user = WebService.post_new_user(params[:user])
-    render :json => @user
+    logon(@user.email)
+    redirect_to popsicles_path
   end
 
   def index

@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     if response["status"] == "success"
       logon(params[:email])
       set_role(response['role'])
-      redirect_to users_path
+      redirect_to popsicles_path
     else
       redirect_to root_path
     end
@@ -17,11 +17,5 @@ class SessionController < ApplicationController
   def destroy
     session.delete("email")
     redirect_to root_path
-  end
-
-  private
-
-  def logon(email)
-    session[:email] = email
   end
 end

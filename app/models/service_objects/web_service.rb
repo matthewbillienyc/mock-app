@@ -53,7 +53,6 @@ class WebService
     byebug
     users = JSON.parse(request.body)
     users.sort_by!{|user| user["id"]}
-
     users.map do |user|
       User.new(first_name: user['first_name'], last_name: user['last_name'])
     end
