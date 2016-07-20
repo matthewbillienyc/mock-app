@@ -8,6 +8,7 @@ require 'minitest/pride'
 require 'webmock/minitest'
 require 'mocha/mini_test'
 require 'popsicles_data_helper'
+require 'users_data_helper'
 
 WebMock.disable_net_connect!(allow_localhost: false)
 

@@ -28,5 +28,8 @@ $(document).ready(function(){
     $(this).hide()
   });
 
+  $('#display_notes').click(function(e){
+    $("#display_notes_modal").foundation('reveal', 'open');
+  });
 
 });

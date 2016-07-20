@@ -11,6 +11,9 @@ module ApplicationHelper
     @account = WebService.get_account_for_user(1)
   end
 
+  def get_notes(serial_number)
+    response = WebService.get_notes(session[:email], serial_number)
+  end
 
   def logged_on?
     !session[:email].blank?

@@ -1,12 +1,11 @@
 class Popsicle
   include ActiveModel::Model
-  attr_accessor :serial_number, :flavor, :color, :rating, :shape, :stick, :company, :status, :response
+  attr_accessor :serial_number, :flavor, :color, :rating, :shape, :stick, :company, :status, :response, :joke
 
   def initialize(popsicle_hash)
     popsicle_hash.each do |key, value|
       send("#{key}=", value) unless value.is_a? Hash
     end
-
     self.stick = Stick.new(popsicle_hash['stick'])
     self.company = Company.new(popsicle_hash['company'])
     self.response = Response.new(popsicle_hash['response'])

@@ -1,11 +1,8 @@
 class NotesController < ApplicationController
-  def get_notes
-    response = WebService.get_notes(params[:email], params[:popsicle_serial_number])
-    render json: response
-  end
+  skip_before_action :authenticity_token, only: [:create]
 
-  def post_note
-    response = WebService.post_note(params[:email], params[:popsicle_serial_number], params[:text], params[:importance])
+  def create
+    response = WebService.post_note(session[:email], params[:note])
     render json: response
   end
 end

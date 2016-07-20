@@ -2,7 +2,7 @@ require 'test_helper'
 require 'mocha/mini_test'
 
 class UsersControllerTest < ActionController::TestCase
-  include PopsiclesDataHelper
+  include PopsiclesDataHelper, UsersDataHelper
   # test "the truth" do
   #   assert true
   # end
@@ -25,8 +25,6 @@ class UsersControllerTest < ActionController::TestCase
         assert_response 200
         assert_template :show
       end
-
-
     end
 
     describe 'index' do
@@ -46,7 +44,6 @@ class UsersControllerTest < ActionController::TestCase
         assert_response 200
         assert_template :index
       end
-
     end
 
     describe 'new' do
@@ -72,12 +69,12 @@ class UsersControllerTest < ActionController::TestCase
         stub_request(:post, %r{.*\/accounts})
           .to_return(status: 200, body: " ", headers: {})
         user = { email: 'test@test.com' }
-        stub_request(:post, %r{.*\/users})
-          .to_return(status: 200, body: user.to_json, headers: {})
+        # moved stub to users_data_helper
+        stub_create_user(user)
       end
       it 'posts data to the API' do
         params = { user: { email: "Frames", password: "Janco", password_confirmation: 'Janco' } }
-        
+
         post :create, params
 
         assert_redirected_to popsicles_path
@@ -89,10 +86,8 @@ class UsersControllerTest < ActionController::TestCase
       it 'displays the edit form for a new user' do
         user = { first_name: 'Bob', last_name: 'Franco' }
         account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
-        stub_request(:get, %r{.*\/accounts/\d})
-          .to_return(status: 200, body: account.to_json, headers: {})
-        stub_request(:get, %r{.*\/users/\d})
-          .to_return(status: 200, body: user.to_json, headers: {})
+        stub_user(user)
+        stub_account(account)
 
         get :edit, id: 1
 
@@ -103,18 +98,18 @@ class UsersControllerTest < ActionController::TestCase
 
     describe 'update' do
       it 'changes the listed data for a user' do
-        user = { first_name: 'Bob', last_name: 'Franco' }
+        name = { first_name: 'bob', last_name: 'bill' }
+        id = 1
+        # look at API, see what should be returned
+        expected_return = { id: id, first_name: 'newfirst', last_name: 'newlast' }
         account = { employer: 'employer', account_number: '123', organization: { name: 'org', state: 'ny' } }
-        stub_request(:put, "http://localhost:8080/mockapi/users/1?first_name=Bob&last_name=Franco").
-          with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-          to_return(:status => 200, :body => "", :headers => {})
+        # moved stub to users_data_helper
+        stub_update_user(id, expected_return)
 
-        post :update, id: 1, name: user
+        post :update, id: id, name: name
 
         assert_response 200
       end
     end
-
-
   end
 end
