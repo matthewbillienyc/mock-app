@@ -1,8 +1,4 @@
 Before('@stub_workload') do
-  stub_cases
-  stub_users
-  stub_single_user
-  stub_single_case
 end
 
 
@@ -34,17 +30,17 @@ end
 
 
 ###SHOW STUBS ###
-def stub_single_user
-  stub_request(:get, %r{.*/users/\d}).
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => dummy_users[0].to_json, :headers => {})
-end
+# def stub_single_user
+#   stub_request(:get, %r{.*/users/\d}).
+#     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+#     to_return(:status => 200, :body => dummy_users[0].to_json, :headers => {})
+# end
 
-def stub_single_case
-  stub_request(:get, %r{.*\/cases/\d}).
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => dummy_cases[0].to_json, :headers => {})
-end
+# def stub_single_case
+#   stub_request(:get, %r{.*\/cases/\d}).
+#     with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+#     to_return(:status => 200, :body => dummy_cases[0].to_json, :headers => {})
+# end
 
 
 def stub_single_account
@@ -91,23 +87,7 @@ end
 #========================================#
 
 ###INDEX STUBS###
-def stub_users
-  stub_request(:get, %r{.*\/users}).
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => dummy_users.to_json, :headers => {})
-end
 
-def stub_cases
-  stub_request(:get, %r{.*\/cases}).
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => dummy_cases.to_json, :headers => {})
-end
-
-def stub_popsicles
-  stub_request(:get, %r{.*\/popsicles}).
-    with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-    to_return(:status => 200, :body => dummy_popsicles.to_json, :headers => {})
-end
 #========================================#
 
 ### Dummy Info ###
