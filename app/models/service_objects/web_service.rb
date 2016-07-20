@@ -14,10 +14,10 @@ class WebService
     end
   end
 
-  def self.post_note(email, popsicle_serial_number, text, importance)
+  def self.post_note(email, note_params)
     url = "#{BASE_URI}/#{EXTENSION}/#{NOTES}"
     headers = { "Logon-Id" => email }
-    query = { email: email, popsicle_serial_number: popsicle_serial_number, text: text, importance: importance }
+    query = { email: email, popsicle_serial_number: note_params[:popsicle_serial_number], text: note_params[:text], importance: note_params[:importance] }
     response = post(url, headers: headers, query: query)
     JSON.parse(response.body)
   end

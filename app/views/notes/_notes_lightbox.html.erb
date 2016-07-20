@@ -1,7 +1,30 @@
 <div id="display_notes_modal" class="reveal-modal" data-reveal role="dialog" data-options="close_on_background_click:false">
   <div class="jumbotron">
     <h1>Notes</h1>
+    <div class="form-area">
+      <form action="/notes" id="note_form" class='form-horizontal'>
+        <input hidden name="note[popsicle_serial_number]" value="<%= @popsicle.serial_number %>" id="note_popsicle_serial_number"/>
+        <div class="form-group">
+          <select name="note[importance]" id="note_importance">
+            <option disabled selected value>- select -</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>  
+        <div class="form-group">
+          <input type="textarea" name="note[text]" id="note_text" style="height:100px;width:400 px;"/>
+        </div>
+        <input type="submit" name="submit" id="submit_note" value="Submit Note" class="btn btn-info"/>
+      </form>
+      </div>
     <div class="notes-group">
+      <ul class='list-group'>
+        <% @notes.each do |note| %>
+          <li class='list-group-item'><%= note.text %> - Importance: <%= note.importance %></li>
+        <% end %>
+      </ul>
     </div>
+    <input type="button" name="cancel" id="cancel_notes" value="Cancel" class="btn btn-info"/>
   </div>
 </div>

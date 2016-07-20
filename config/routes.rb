@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post '/rate_popsicle' => 'popsicles#rate', as: :rate_popsicle
 
   get '/accounts/:id' => 'accounts#show', as: :show_account
+
+  post '/notes' => 'notes#create', as: :new_note
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

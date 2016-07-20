@@ -36,4 +36,29 @@ $(document).ready(function() {
       this.element(element);
     }
   })
+
+  $("#note_form").validate({
+    showErrors: function(errorMap, errorList){
+      this.defaultShowErrors();
+    },
+    rules: {
+      "note[importance]": {
+        required: true
+      },
+      "note[text]": {
+        required: true
+      }
+    },
+    messages: {
+      "note[importance]": {
+        required: "This is a required field."
+      },
+      "note[text]": {
+        required: "This is a required field."
+      },
+      onfocusout: function(element) {
+        this.element(element);
+      }
+    }
+  })
 });

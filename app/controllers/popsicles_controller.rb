@@ -10,6 +10,7 @@ class PopsiclesController < ApplicationController
   end
 
   def show
+    @notes = get_notes(params[:serial_number])
     @popsicle = WebService.get_popsicle_details(session[:email], params[:serial_number])
   end
 
