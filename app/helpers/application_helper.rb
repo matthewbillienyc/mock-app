@@ -28,4 +28,7 @@ module ApplicationHelper
     redirect_to root_path unless logged_on?
   end
 
+  def logon(email)
+    session[:email] = email
+  end
 end
